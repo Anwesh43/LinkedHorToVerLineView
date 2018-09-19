@@ -141,7 +141,7 @@ class HorToVerLineView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class HorToLine(var i : Int) {
+    data class HorToVerLine(var i : Int) {
         private var root : HTVNode = HTVNode(0)
         private var curr : HTVNode = root
         private var dir : Int = 1
@@ -161,6 +161,29 @@ class HorToVerLineView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : HorToVerLineView) {
+
+        private val hvl : HorToVerLine = HorToVerLine(0)
+
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(Color.parseColor("#BDBDBD"))
+            hvl.draw(canvas, paint)
+            animator.animate {
+                hvl.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hvl.startUpdating {
+                animator.start()
+            }
         }
     }
 }
