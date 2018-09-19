@@ -4,6 +4,7 @@ package com.anwesh.uiprojects.hortoverlineview
  * Created by anweshmishra on 19/09/18.
  */
 
+import android.app.Activity
 import android.view.View
 import android.view.MotionEvent
 import android.content.Context
@@ -186,6 +187,17 @@ class HorToVerLineView(ctx : Context) : View(ctx) {
             hvl.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+        private lateinit var view : HorToVerLineView
+        fun create(activity : Activity) : HorToVerLineView {
+            if (view == null) {
+                view = HorToVerLineView(activity)
+                activity.setContentView(view)
+            }
+            return view
         }
     }
 }
