@@ -10,6 +10,5 @@
 
 #### DEMO
 
-```
-    <img src="https://github.com/Anwesh43/LinkedHorToVerLineView/blob/master/linkedhortoverlineview.gif" width="300px" height="500px">
-```
+
+<img src="https://github.com/Anwesh43/LinkedHorToVerLineView/blob/master/linkedhortoverlineview.gif" width="300px" height="500px">
