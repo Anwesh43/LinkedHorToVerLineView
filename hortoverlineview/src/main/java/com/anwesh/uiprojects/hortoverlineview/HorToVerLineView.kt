@@ -11,6 +11,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.RectF
 
 val nodes : Int = 5
 
@@ -34,6 +35,9 @@ fun Canvas.drawHTVNode(i : Int, scale : Float, paint : Paint) {
         rotate(90f * sc)
         drawLine(0f, 0f, (gap/2) * sf, 0f, paint)
         restore()
+        val size : Float = gap / 8
+        val y : Float = -0.4f * h * (sf)
+        drawRect(RectF(-gap/2, y - size, -gap/2 + gap * sc, y + size), paint)
     }
     restore()
 }
