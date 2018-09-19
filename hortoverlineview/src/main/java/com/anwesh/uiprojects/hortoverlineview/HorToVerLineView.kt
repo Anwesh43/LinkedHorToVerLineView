@@ -17,6 +17,26 @@ val color : Int = Color.parseColor("#4527A0")
 
 val strokeWidthFactor : Int = 60
 
+fun Canvas.drawHTVNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    val gap : Float = w / (nodes + 1)
+    paint.strokeWidth = Math.min(w, h) / strokeWidthFactor
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.color = color
+    save()
+    translate(gap * i + gap, h/2)
+    for (j in 0..1) {
+        val sf : Float = 1f - 2 * j
+        val sc : Float = Math.min(0.5f, Math.max(0f, scale - j * 0.5f))
+        save()
+        rotate(90f * sc)
+        drawLine(0f, 0f, (gap/2) * sf, 0f, paint)
+        restore()
+    }
+    restore()
+}
+
 class HorToVerLineView(ctx : Context) : View(ctx) {
 
     private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
