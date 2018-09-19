@@ -9,8 +9,13 @@ import android.view.MotionEvent
 import android.content.Context
 import android.graphics.Paint
 import android.graphics.Canvas
+import android.graphics.Color
 
 val nodes : Int = 5
+
+val color : Int = Color.parseColor("#4527A0")
+
+val strokeWidthFactor : Int = 60
 
 class HorToVerLineView(ctx : Context) : View(ctx) {
 
